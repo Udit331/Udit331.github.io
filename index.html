@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Account Registration</title>
+</head>
+<body>
+  <h1>Create an Account</h1>
+  <form id="registrationForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required><br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select><br>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const gender = document.getElementById("gender").value;
+
+      // Send the registration data to your server for processing
+      // Here, you can perform any necessary backend validations and database operations
+
+      // For example, you can use JavaScript's Fetch API to send a POST request to your server.
+      // Replace 'your_server_endpoint' with the actual URL of your server.
+      fetch('your_server_endpoint', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password, gender }),
+      })
+      .then(response => {
+        // Handle the response from the server (e.g., display success or error message to the user).
+        // You can also redirect the user to a login page upon successful registration.
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+  </script>
+</body>
+</html>
